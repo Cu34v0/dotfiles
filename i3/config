@@ -198,6 +198,8 @@ smart_gaps on
 
 # Captura de pantalla
 bindsym Print exec gnome-screenshot
+# Captura de pantalla en una zona
+bindsym $mod+c exec gnome-screenshot -a
 
 # Polkit
 exec --no-startup-id exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -209,10 +211,21 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
 
 # Picom
-exec --no-startup-id picom -b
+exec --no-startup-id picom --animations -b
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Power Manager XFCE
+exec --no-startup-id xfce4-power-manager
+
+# Power menu
+bindsym $mod+x exec rofi -show power-menu -modi power-menu:~/Scripts/rofi-power-menu
+
+# Pantalla extra por VGA
+# La configuración es la correcta sin embargo, de primer momento, el Wallpaper podría verse dividido
+# Para solucionarlo, se debe ajustar cada Wallpaper para cada pantalla 
+exec --no-startup-id xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1024x768 --right-of LVDS1
