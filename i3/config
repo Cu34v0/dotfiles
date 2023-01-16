@@ -194,12 +194,12 @@ exec --no-startup-id setxkbmap latam
 for_window [class=".*"] border pixel 2
 gaps inner 8
 gaps outer 8
-smart_gaps on
+#smart_gaps on
 
 # Captura de pantalla
-bindsym Print exec gnome-screenshot
+bindsym Print exec flameshot screen 
 # Captura de pantalla en una zona
-bindsym $mod+c exec gnome-screenshot -a
+bindsym $mod+c exec flameshot gui
 
 # Polkit
 exec --no-startup-id exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -223,9 +223,22 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id xfce4-power-manager
 
 # Power menu
-bindsym $mod+x exec rofi -show power-menu -modi power-menu:~/Scripts/rofi-power-menu
+bindsym $mod+x exec rofi -show power-menu -modi power-menu:rofi-power-menu
 
 # Pantalla extra por VGA
 # La configuración es la correcta sin embargo, de primer momento, el Wallpaper podría verse dividido
 # Para solucionarlo, se debe ajustar cada Wallpaper para cada pantalla 
 exec --no-startup-id xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1024x768 --right-of LVDS1
+
+# Thunar, administrador de archivos
+bindsym $mod+t exec thunar
+
+# Colores
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
