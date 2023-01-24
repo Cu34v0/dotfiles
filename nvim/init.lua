@@ -1,12 +1,16 @@
-local opt=vim.opt
-
-opt.number=true
-opt.relativenumber=true
-
+require('base')
 require('plugins')
-require'nvim-lastplace'.setup{}
+require 'nvim-lastplace'.setup {}
 require('color')
 require('p-tree')
 require('p-treesitter')
 require('p-lualine')
-require('buftabline')
+require('p-lsp')
+require('p-mason')
+require('text')
+require('maps')
+require('telescope')
+require 'colorizer'.setup()
+require('p-lspkind')
+require('p-cmp')
+require('p-snip')
