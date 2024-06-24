@@ -92,7 +92,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -187,8 +187,27 @@ bindsym $mod+r mode "resize"
 
 # Cu34v0
 
+# Wallpaper
+exec --no-startup-id nitrogen --restore
+
+bindsym $mod+Shift+N exec nitrogen --restore
+
+# Pantalla extra por VGA
+# La configuración es la correcta sin embargo, de primer momento, el Wallpaper podría verse dividido
+# Para solucionarlo, se debe ajustar cada Wallpaper para cada pantalla 
+exec --no-startup-id sh -c "sleep 2 && xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1920x1080 --right-of LVDS1"
+# Salida izquierda
+bindsym $mod+Shift+I exec xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1920x1080 --left-of LVDS1 
+# Salida derecha
+bindsym $mod+Shift+D exec xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1920x1080 --right-of LVDS1
+
 # Teclado latinoamericano
 exec --no-startup-id setxkbmap latam
+
+# Otras variantes del teclado
+bindsym $mod+Shift+A exec setxkbmap latam
+bindsym $mod+Shift+S exec setxkbmap es
+bindsym $mod+Shift+U exec setxkbmap us -variant altgr-intl
 
 # Gaps
 for_window [class=".*"] border pixel 2
@@ -207,11 +226,8 @@ exec --no-startup-id exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agen
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Wallpaper
-exec --no-startup-id nitrogen --restore
-
 # Picom
-exec --no-startup-id picom --animations -b
+exec --no-startup-id picom -b 
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -224,11 +240,6 @@ exec --no-startup-id xfce4-power-manager
 
 # Power menu
 bindsym $mod+x exec rofi -show power-menu -modi power-menu:rofi-power-menu
-
-# Pantalla extra por VGA
-# La configuración es la correcta sin embargo, de primer momento, el Wallpaper podría verse dividido
-# Para solucionarlo, se debe ajustar cada Wallpaper para cada pantalla 
-exec --no-startup-id xrandr --output LVDS1 --primary --mode 1366x768 --output VGA1 --mode 1024x768 --right-of LVDS1
 
 # Thunar, administrador de archivos
 bindsym $mod+t exec thunar
