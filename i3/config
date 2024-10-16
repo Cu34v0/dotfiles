@@ -187,26 +187,15 @@ bindsym $mod+r mode "resize"
 
 # Cu34v0
 
-# Wallpaper
-exec --no-startup-id nitrogen --restore
+# Ejecutar script de los monitores
+exec --no-startup-id ~/Scripts/screen.sh
 
-bindsym $mod+Shift+N exec nitrogen --restore
-
-# Pantalla extra por VGA
-# La configuración es la correcta sin embargo, de primer momento, el Wallpaper podría verse dividido
-# Para solucionarlo, se debe ajustar cada Wallpaper para cada pantalla 
-exec --no-startup-id sh -c "sleep 2 && xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --mode 1920x1080 --right-of LVDS-1"
-# Salida izquierda
-bindsym $mod+Shift+I exec xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --mode 1920x1080 --left-of LVDS-1 
-# Salida derecha
-bindsym $mod+Shift+D exec xrandr --output LVDS-1 --primary --mode 1366x768 --output VGA-1 --mode 1920x1080 --right-of LVDS-1
 
 # Teclado latinoamericano
 exec --no-startup-id setxkbmap latam
 
 # Otras variantes del teclado
 bindsym $mod+Shift+A exec setxkbmap latam
-bindsym $mod+Shift+S exec setxkbmap es
 bindsym $mod+Shift+U exec setxkbmap us -variant altgr-intl
 
 # Gaps
