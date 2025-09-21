@@ -100,7 +100,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -195,8 +195,8 @@ exec --no-startup-id ~/Scripts/screen.sh
 exec --no-startup-id setxkbmap latam
 
 # Otras variantes del teclado
-bindsym $mod+Shift+A exec setxkbmap latam
-bindsym $mod+Shift+U exec setxkbmap us -variant altgr-intl
+#bindsym $mod+Shift+A exec setxkbmap latam
+#bindsym $mod+Shift+U exec setxkbmap us -variant altgr-intl
 
 # Gaps
 for_window [class=".*"] border pixel 2
@@ -207,7 +207,7 @@ gaps outer 8
 # Captura de pantalla
 bindsym Print exec flameshot screen 
 # Captura de pantalla en una zona
-bindsym $mod+c exec flameshot gui
+bindsym $mod+Shift+S exec flameshot gui
 
 # Polkit
 exec --no-startup-id exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -232,6 +232,9 @@ bindsym $mod+x exec rofi -show power-menu -modi power-menu:rofi-power-menu
 
 # Thunar, administrador de archivos
 bindsym $mod+t exec thunar
+
+# Keyboard toggle
+bindsym $mod+space exec $HOME/Scripts/keyboard_toggle.sh
 
 # Colores
 # class                 border  backgr. text    indicator child_border
